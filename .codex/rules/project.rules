@@ -1,0 +1,26 @@
+# Project-local Codex command policy examples.
+#
+# Codex loads project-local rules from .codex/rules only when this project
+# .codex layer is trusted. These rules are for command execution policy, not
+# architectural guidance. Architectural guidance belongs in AGENTS.md files.
+
+prefix_rule(
+    pattern = ["pnpm", "test"],
+    decision = "allow",
+    justification = "Project test command is safe and expected before commits",
+    match = ["pnpm test"],
+)
+
+prefix_rule(
+    pattern = ["pnpm", "build"],
+    decision = "allow",
+    justification = "Project build command is safe and expected before commits",
+    match = ["pnpm build"],
+)
+
+prefix_rule(
+    pattern = ["pnpm", "docs:build"],
+    decision = "allow",
+    justification = "Documentation build is safe and expected for docs changes",
+    match = ["pnpm docs:build"],
+)

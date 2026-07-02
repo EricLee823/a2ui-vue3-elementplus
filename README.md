@@ -30,3 +30,10 @@ eventSource.addEventListener('a2ui', (event) => {
 - `examples`: Low-cost user integration examples.
 - `apps/docs`: Online API docs.
 - `apps/playground-vue-element-plus`: Author playground.
+
+## Project Thinking
+
+- [Architecture](./ARCHITECTURE.md): package boundaries, realtime message flow, rendering model, and extension points.
+- [Project Rules](./PROJECT_RULES.md): non-negotiable engineering rules and their evolution process.
+- [Agent Guide](./AGENTS.md): entrypoint for coding agents working in this repository.
+- [Codex Command Rules](./.codex/rules/project.rules): project-local command execution policy examples.

@@ -23,7 +23,9 @@ eventSource.addEventListener('message', (event) => {
 ## Start here
 
 - [Quick Start](/guide/quick-start)
+- [Architecture](/guide/architecture)
 - [Realtime Messages](/guide/realtime-messages)
 - [Data Examples](/guide/data-examples)
 - [Custom Components](/guide/custom-components)
+- [Project Rules](/guide/project-rules)
 - [API Reference](/api/)

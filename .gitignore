@@ -3,6 +3,7 @@ dist
 .turbo
 coverage
 .vite
-.vitepress/cache
-.vitepress/dist
+.codegraph/
+**/.vitepress/cache
+**/.vitepress/dist
 *.tsbuildinfo
