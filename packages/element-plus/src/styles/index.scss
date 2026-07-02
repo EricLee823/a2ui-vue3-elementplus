@@ -1,0 +1,58 @@
+.a2-surface {
+  width: 100%;
+}
+
+.a2-column,
+.a2-row {
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+}
+
+.a2-column {
+  flex-direction: column;
+}
+
+.a2-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.a2-card {
+  max-width: 100%;
+}
+
+.a2-text {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.a2-text--h1,
+.a2-text--h2,
+.a2-text--h3,
+.a2-text--h4,
+.a2-text--h5 {
+  font-weight: 650;
+}
+
+.a2-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.a2-field__label {
+  color: var(--el-text-color-regular);
+  font-size: 14px;
+}
+
+.a2-choice-picker {
+  min-width: 220px;
+}
+
+.a2-render-unknown {
+  border: 1px dashed var(--el-border-color);
+  color: var(--el-text-color-secondary);
+  padding: 8px;
+}

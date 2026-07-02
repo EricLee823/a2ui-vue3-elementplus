@@ -1,0 +1,4 @@
+{"version":"v0.9","createSurface":{"surfaceId":"main","catalogId":"https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"}}
+{"version":"v0.9","createSurface":{"surfaceId":"dialog","catalogId":"https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"}}
+{"version":"v0.9","updateComponents":{"surfaceId":"main","components":[{"id":"root","component":"Column","children":["title","body"]},{"id":"title","component":"Text","text":"Main Surface","variant":"h2"},{"id":"body","component":"Text","text":"The main surface can update independently."}]}}
+{"version":"v0.9","updateComponents":{"surfaceId":"dialog","components":[{"id":"root","component":"Card","child":"dialog-content"},{"id":"dialog-content","component":"Column","children":["dialog-title","dialog-copy"]},{"id":"dialog-title","component":"Text","text":"Dialog Surface","variant":"h3"},{"id":"dialog-copy","component":"Text","text":"This is a second surface rendered by the same runtime."}]}}

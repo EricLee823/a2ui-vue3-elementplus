@@ -1,0 +1,2 @@
+{"version":"v0.9","createSurface":{"surfaceId":"main","catalogId":"https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"}}
+{"version":"v0.9","updateComponents":{"surfaceId":"main","components":[{"id":"root","component":"Column","children":["title","subtitle"]},{"id":"title","component":"Text","text":"Hello A2UI","variant":"h1"},{"id":"subtitle","component":"Text","text":"This surface was rendered from realtime A2UI message text."}]}}

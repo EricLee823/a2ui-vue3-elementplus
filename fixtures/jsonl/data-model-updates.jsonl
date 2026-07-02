@@ -1,0 +1,6 @@
+{"version":"v0.9","createSurface":{"surfaceId":"main","catalogId":"https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"}}
+{"version":"v0.9","updateDataModel":{"surfaceId":"main","path":"/","value":{"counter":0,"status":"Idle"}}}
+{"version":"v0.9","updateComponents":{"surfaceId":"main","components":[{"id":"root","component":"Column","children":["title","counter","status"]},{"id":"title","component":"Text","text":"Realtime Data Updates","variant":"h2"},{"id":"counter","component":"Text","text":{"path":"/counter"}},{"id":"status","component":"Text","text":{"path":"/status"}}]}}
+{"version":"v0.9","updateDataModel":{"surfaceId":"main","path":"/counter","value":1}}
+{"version":"v0.9","updateDataModel":{"surfaceId":"main","path":"/status","value":"Receiving messages"}}
+{"version":"v0.9","updateDataModel":{"surfaceId":"main","path":"/counter","value":2}}

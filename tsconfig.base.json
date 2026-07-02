@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@a2ui/protocol-v09": ["packages/protocol-v09/src/index.ts"],
+      "@a2ui/message-parser": ["packages/message-parser/src/index.ts"],
+      "@a2ui/runtime-core": ["packages/runtime-core/src/index.ts"],
+      "@a2ui/scheduler": ["packages/scheduler/src/index.ts"],
+      "@a2ui/vue-renderer": ["packages/vue-renderer/src/index.ts"],
+      "@a2ui/element-plus": ["packages/element-plus/src/index.ts"]
+    }
+  }
+}

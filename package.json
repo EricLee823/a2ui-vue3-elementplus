@@ -1,0 +1,38 @@
+{
+  "name": "a2ui-vue3-elementplus-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "pnpm --filter @a2ui/playground-vue-element-plus dev",
+    "test": "turbo test",
+    "typecheck": "turbo typecheck",
+    "lint": "turbo lint",
+    "docs:dev": "pnpm --filter @a2ui/docs dev",
+    "docs:build": "pnpm --filter @a2ui/docs build",
+    "docs:preview": "pnpm --filter @a2ui/docs preview",
+    "example:basic": "pnpm --filter @a2ui/example-basic-form dev",
+    "example:custom": "pnpm --filter @a2ui/example-custom-component dev",
+    "changeset": "changeset",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.6",
+    "@types/node": "^22.10.0",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/test-utils": "^2.4.6",
+    "element-plus": "^2.9.0",
+    "jsdom": "^25.0.1",
+    "sass": "^1.83.0",
+    "tsup": "^8.3.5",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.0",
+    "vitepress": "^1.5.0",
+    "vitest": "^3.0.0",
+    "vue": "^3.5.0",
+    "vue-tsc": "^2.2.0"
+  }
+}

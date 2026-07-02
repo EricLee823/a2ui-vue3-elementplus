@@ -1,0 +1,31 @@
+{
+  "name": "@a2ui/element-plus",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/style.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": ["dist"],
+  "sideEffects": ["./dist/style.css"],
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "test": "vitest run --passWithNoTests"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.0.0",
+    "vue": "^3.4.0 || ^3.5.0"
+  },
+  "dependencies": {
+    "@a2ui/vue-renderer": "workspace:*"
+  }
+}

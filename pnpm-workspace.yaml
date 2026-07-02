@@ -1,0 +1,8 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+  - "examples/*"
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  vue-demi: true
