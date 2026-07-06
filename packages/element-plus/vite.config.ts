@@ -20,7 +20,7 @@ export default defineConfig({
       cssFileName: 'style'
     },
     rollupOptions: {
-      external: ['vue', 'element-plus', '@a2ui/vue-renderer']
+      external: ['vue', 'element-plus', '@a2ui-vue3-elementplus/vue-renderer']
     }
   }
 });

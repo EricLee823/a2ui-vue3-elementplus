@@ -1,4 +1,4 @@
-import type { A2CustomComponents } from '@a2ui/vue-renderer';
+import type { A2CustomComponents } from '@a2ui-vue3-elementplus/vue-renderer';
 import {
   A2Button,
   A2Card,
@@ -21,6 +21,22 @@ function bindingPath(input: unknown): string | undefined {
   return input && typeof input === 'object' && 'path' in (input as Record<string, unknown>)
     ? String((input as Record<string, unknown>).path)
     : undefined;
+}
+
+function choiceBindingPath(node: Record<string, unknown>): string | undefined {
+  return bindingPath(node.selections) ?? bindingPath(node.value);
+}
+
+function choiceUsesSelections(node: Record<string, unknown>): boolean {
+  return bindingPath(node.selections) !== undefined;
+}
+
+function choiceAllowsMultiple(node: Record<string, unknown>): boolean {
+  if (node.maxAllowedSelections !== undefined) {
+    return Number(node.maxAllowedSelections) !== 1;
+  }
+
+  return node.variant === 'multipleSelection';
 }
 
 export function createElementPlusCatalog(): A2CustomComponents {
@@ -123,21 +139,23 @@ export function createElementPlusCatalog(): A2CustomComponents {
     },
     ChoicePicker: {
       component: A2ChoicePicker,
-      dependencies: (node) => [bindingPath(node.selections)],
+      dependencies: (node) => [choiceBindingPath(node)],
       propsMapper: (node, ctx) => {
-        const path = bindingPath(node.selections);
-        const maxAllowedSelections = Number(node.maxAllowedSelections ?? 1);
-        const raw = path ? ctx.getValue(path) : ctx.resolveValue(node.selections);
+        const path = choiceBindingPath(node);
+        const multiple = choiceAllowsMultiple(node);
+        const raw = path ? ctx.getValue(path) : ctx.resolveValue(node.selections ?? node.value);
         return {
+          label: node.label,
           options: node.options,
-          modelValue: maxAllowedSelections === 1 && Array.isArray(raw) ? raw[0] : raw,
-          multiple: maxAllowedSelections !== 1
+          modelValue: multiple && raw === undefined ? [] : !multiple && Array.isArray(raw) ? raw[0] : raw,
+          multiple
         };
       },
       eventsMapper: (node, ctx) => ({
         'onUpdate:modelValue': (value: unknown) => {
-          const maxAllowedSelections = Number(node.maxAllowedSelections ?? 1);
-          ctx.setValue(bindingPath(node.selections), maxAllowedSelections === 1 ? [value] : value);
+          const multiple = choiceAllowsMultiple(node);
+          const usesSelections = choiceUsesSelections(node);
+          ctx.setValue(choiceBindingPath(node), !multiple && usesSelections ? [value] : value);
         }
       })
     },
@@ -147,6 +165,7 @@ export function createElementPlusCatalog(): A2CustomComponents {
       propsMapper: (node, ctx) => {
         const path = bindingPath(node.value);
         return {
+          label: node.label,
           modelValue: path ? ctx.getValue(path) : ctx.resolveValue(node.value),
           enableDate: node.enableDate !== false,
           enableTime: Boolean(node.enableTime)

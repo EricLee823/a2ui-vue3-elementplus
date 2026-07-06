@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 import A2RealtimeRenderer from './components/A2RealtimeRenderer.vue';
 import A2Surface from './components/A2Surface.vue';
+import { A2_REGISTRY_KEY } from './context/injectionKeys';
 import { createComponentRegistry } from './registry/createComponentRegistry';
 import type { A2CustomComponents, RegisterConflictStrategy } from './registry/types';
 
@@ -17,7 +18,7 @@ export function createA2UIVuePlugin(options: A2UIVuePluginOptions = {}) {
 
   return {
     install(app: App) {
-      app.provide('a2uiRegistry', registry);
+      app.provide(A2_REGISTRY_KEY, registry);
       app.component('A2Surface', A2Surface);
       app.component('A2RealtimeRenderer', A2RealtimeRenderer);
     }

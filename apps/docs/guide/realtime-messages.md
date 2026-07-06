@@ -1,11 +1,11 @@
-# Realtime Messages
+# 实时消息
 
-A2UI is transport independent. Use SSE, WebSocket, fetch streaming, or any existing realtime client, then pass each complete JSON or JSONL message into `pushMessage`.
+A2UI 与传输层无关。你可以使用 SSE、WebSocket、fetch streaming 或任何已有 realtime client，然后把每条完整 JSON 或 JSONL message 传给 `pushMessage`。
 
-## Server-sent events
+## SSE
 
 ```ts
-import { useA2UI } from '@a2ui/element-plus';
+import { useA2UI } from '@a2ui-vue3-elementplus/element-plus';
 
 const { pushMessage } = useA2UI();
 const source = new EventSource('/api/a2ui');
@@ -27,10 +27,10 @@ socket.addEventListener('message', (event) => {
 });
 ```
 
-## Message shape
+## 消息形状
 
 ```json
 {"version":"v0.9","createSurface":{"surfaceId":"main","catalogId":"https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json"}}
 ```
 
-Fixtures in `fixtures/jsonl` provide end-to-end samples for docs, tests, and playgrounds.
+`fixtures/jsonl` 中的 fixtures 提供可用于 docs、tests 和 playgrounds 的端到端示例。

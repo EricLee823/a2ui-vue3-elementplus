@@ -5,12 +5,12 @@
   "fixed": [],
   "linked": [
     [
-      "@a2ui/protocol-v09",
-      "@a2ui/message-parser",
-      "@a2ui/runtime-core",
-      "@a2ui/scheduler",
-      "@a2ui/vue-renderer",
-      "@a2ui/element-plus"
+      "@a2ui-vue3-elementplus/protocol-v09",
+      "@a2ui-vue3-elementplus/message-parser",
+      "@a2ui-vue3-elementplus/runtime-core",
+      "@a2ui-vue3-elementplus/scheduler",
+      "@a2ui-vue3-elementplus/vue-renderer",
+      "@a2ui-vue3-elementplus/element-plus"
     ]
   ],
   "access": "public",

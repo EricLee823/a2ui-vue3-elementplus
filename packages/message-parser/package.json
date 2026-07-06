@@ -1,8 +1,13 @@
 {
-  "name": "@a2ui/message-parser",
-  "version": "0.1.0",
+  "name": "@a2ui-vue3-elementplus/message-parser",
+  "version": "1.0.0",
   "description": "JSON and JSONL message parsing utilities for A2UI.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricLee823/a2ui-vue3-elementplus.git",
+    "directory": "packages/message-parser"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,6 +21,10 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest run",

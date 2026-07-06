@@ -16,12 +16,12 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@a2ui/protocol-v09": ["packages/protocol-v09/src/index.ts"],
-      "@a2ui/message-parser": ["packages/message-parser/src/index.ts"],
-      "@a2ui/runtime-core": ["packages/runtime-core/src/index.ts"],
-      "@a2ui/scheduler": ["packages/scheduler/src/index.ts"],
-      "@a2ui/vue-renderer": ["packages/vue-renderer/src/index.ts"],
-      "@a2ui/element-plus": ["packages/element-plus/src/index.ts"]
+      "@a2ui-vue3-elementplus/protocol-v09": ["packages/protocol-v09/src/index.ts"],
+      "@a2ui-vue3-elementplus/message-parser": ["packages/message-parser/src/index.ts"],
+      "@a2ui-vue3-elementplus/runtime-core": ["packages/runtime-core/src/index.ts"],
+      "@a2ui-vue3-elementplus/scheduler": ["packages/scheduler/src/index.ts"],
+      "@a2ui-vue3-elementplus/vue-renderer": ["packages/vue-renderer/src/index.ts"],
+      "@a2ui-vue3-elementplus/element-plus": ["packages/element-plus/src/index.ts"]
     }
   }
 }

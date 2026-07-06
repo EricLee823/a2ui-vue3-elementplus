@@ -1,7 +1,7 @@
 {
-  "name": "@a2ui/playground-vue-element-plus",
+  "name": "@a2ui-vue3-elementplus/playground-vue-element-plus",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -10,7 +10,7 @@
     "typecheck": "vue-tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@a2ui/element-plus": "workspace:*",
+    "@a2ui-vue3-elementplus/element-plus": "workspace:*",
     "element-plus": "^2.9.0",
     "vue": "^3.5.0"
   },

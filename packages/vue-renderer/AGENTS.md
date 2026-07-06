@@ -1,8 +1,8 @@
-# Vue Renderer Instructions
+# Vue Renderer 说明
 
-`vue-renderer` provides Vue rendering primitives without depending on Element Plus.
+`vue-renderer` 提供 Vue rendering primitives，但不依赖 Element Plus。
 
-Allowed:
+允许：
 
 - Vue APIs,
 - runtime-core,
@@ -10,13 +10,13 @@ Allowed:
 - component registry,
 - render context.
 
-Not allowed:
+不允许：
 
-- importing Element Plus,
-- hardcoding Basic Catalog visual behavior that belongs in UI adapters,
-- owning SSE/WebSocket transport.
+- importing Element Plus；
+- hardcoding 属于 UI adapters 的 Basic Catalog visual behavior；
+- owning SSE/WebSocket transport。
 
-The registry API is public. Be careful with changes to:
+registry API 是 public。修改以下内容时要谨慎：
 
 - `components`
 - `propsMapper`

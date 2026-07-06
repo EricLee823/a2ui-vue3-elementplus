@@ -17,6 +17,11 @@ import {
 } from 'element-plus';
 
 const renderChildren = (children: VNodeChild): any => (Array.isArray(children) ? children : children ?? undefined);
+const renderField = (label: string | undefined, child: VNodeChild): any =>
+  h('div', { class: 'a2-field' }, [
+    label ? h('span', { class: 'a2-field__label' }, label) : null,
+    child
+  ]);
 
 export const A2Text = defineComponent({
   name: 'A2Text',
@@ -157,15 +162,17 @@ export const A2TextField = defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
+    const normalizeValue = (value: unknown) => (props.textFieldType === 'number' ? Number(value) : value);
+
     return () =>
-      h('label', { class: 'a2-field' }, [
-        props.label ? h('span', { class: 'a2-field__label' }, props.label) : null,
+      renderField(
+        props.label,
         h(ElInput as any, {
           modelValue: props.modelValue,
           type: props.textFieldType === 'longText' ? 'textarea' : props.textFieldType === 'obscured' ? 'password' : 'text',
-          onInput: (value: string) => emit('update:modelValue', props.textFieldType === 'number' ? Number(value) : value)
+          'onUpdate:modelValue': (value: unknown) => emit('update:modelValue', normalizeValue(value))
         })
-      ]);
+      );
   }
 });
 
@@ -192,6 +199,7 @@ export const A2CheckBox = defineComponent({
 export const A2ChoicePicker = defineComponent({
   name: 'A2ChoicePicker',
   props: {
+    label: String,
     options: {
       type: Array as PropType<Array<{ label: string; value: unknown }>>,
       default: () => []
@@ -202,15 +210,18 @@ export const A2ChoicePicker = defineComponent({
   emits: ['update:modelValue'],
   setup(props, { emit }) {
     return () =>
-      h(
-        ElSelect as any,
-        {
-          modelValue: props.modelValue,
-          multiple: props.multiple,
-          class: 'a2-choice-picker',
-          'onUpdate:modelValue': (value: unknown) => emit('update:modelValue', value)
-        },
-        () => props.options.map((option) => h(ElOption as any, { key: String(option.value), label: option.label, value: option.value as any }))
+      renderField(
+        props.label,
+        h(
+          ElSelect as any,
+          {
+            modelValue: props.modelValue,
+            multiple: props.multiple,
+            class: 'a2-choice-picker',
+            'onUpdate:modelValue': (value: unknown) => emit('update:modelValue', value)
+          },
+          () => props.options.map((option) => h(ElOption as any, { key: String(option.value), label: option.label, value: option.value as any }))
+        )
       );
   }
 });
@@ -218,6 +229,7 @@ export const A2ChoicePicker = defineComponent({
 export const A2DateTimeInput = defineComponent({
   name: 'A2DateTimeInput',
   props: {
+    label: String,
     modelValue: [String, Date, Array] as PropType<unknown>,
     enableDate: Boolean,
     enableTime: Boolean
@@ -226,12 +238,15 @@ export const A2DateTimeInput = defineComponent({
   setup(props, { emit }) {
     return () => {
       const picker = props.enableTime && !props.enableDate ? ElTimePicker : ElDatePicker;
-      return h(picker as any, {
-        modelValue: props.modelValue,
-        type: props.enableDate && props.enableTime ? 'datetime' : 'date',
-        valueFormat: 'YYYY-MM-DDTHH:mm:ss',
-        'onUpdate:modelValue': (value: unknown) => emit('update:modelValue', value)
-      });
+      return renderField(
+        props.label,
+        h(picker as any, {
+          modelValue: props.modelValue,
+          type: props.enableDate && props.enableTime ? 'datetime' : 'date',
+          valueFormat: 'YYYY-MM-DDTHH:mm:ss',
+          'onUpdate:modelValue': (value: unknown) => emit('update:modelValue', value)
+        })
+      );
     };
   }
 });

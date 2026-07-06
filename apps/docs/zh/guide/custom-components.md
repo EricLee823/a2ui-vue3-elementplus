@@ -1,12 +1,12 @@
 # 自定义组件
 
-业务应用可以为自定义 `component` 名称注册 Vue 组件。A2UI 仍然控制布局、props 映射和数据绑定。
+应用可以为领域专属的 `component` 值注册 Vue components，同时仍由 A2UI 控制位置、props 和数据绑定。
 
 ```ts
-import { useA2UI } from '@a2ui/element-plus';
+import { useA2UI } from '@a2ui-vue3-elementplus/element-plus';
 import MetricCard from './MetricCard.vue';
 
-const { runtime, pushMessage } = useA2UI({
+const { pushMessage } = useA2UI({
   components: {
     MetricCard: {
       component: MetricCard,
@@ -25,10 +25,28 @@ const { runtime, pushMessage } = useA2UI({
 });
 ```
 
-服务端可以推送使用该组件名的节点：
+`MetricCard.vue` 可以只是普通的 Vue component。
+
+```vue
+<script setup lang="ts">
+defineProps<{
+  title?: string;
+  value?: number;
+  status?: string;
+}>();
+</script>
+
+<template>
+  <article class="metric-card">
+    <strong>{{ title }}</strong>
+    <span>{{ value }}</span>
+    <em>{{ status }}</em>
+  </article>
+</template>
+```
+
+然后推送使用该已注册 component name 的 component。
 
 ```json
 {"version":"v0.9","updateComponents":{"surfaceId":"main","components":[{"id":"root","component":"Column","children":["conversion-card"]},{"id":"conversion-card","component":"MetricCard","title":"Checkout conversion","value":{"path":"/metrics/conversion"},"status":"healthy"}]}}
 ```
-
-完整示例见 `examples/custom-component`。

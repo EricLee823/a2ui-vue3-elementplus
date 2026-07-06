@@ -1,21 +1,26 @@
 {
-  "name": "a2ui-vue3-elementplus-monorepo",
+  "name": "a2ui-vue3-elementplus",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricLee823/a2ui-vue3-elementplus.git"
+  },
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "build": "turbo build",
-    "dev": "pnpm --filter @a2ui/playground-vue-element-plus dev",
+    "dev": "pnpm --filter @a2ui-vue3-elementplus/playground-vue-element-plus dev",
     "test": "turbo test",
     "typecheck": "turbo typecheck",
     "lint": "turbo lint",
-    "docs:dev": "pnpm --filter @a2ui/docs dev",
-    "docs:build": "pnpm --filter @a2ui/docs build",
-    "docs:preview": "pnpm --filter @a2ui/docs preview",
-    "example:basic": "pnpm --filter @a2ui/example-basic-form dev",
-    "example:custom": "pnpm --filter @a2ui/example-custom-component dev",
+    "docs:dev": "pnpm --filter @a2ui-vue3-elementplus/docs dev",
+    "docs:build": "pnpm --filter @a2ui-vue3-elementplus/docs build",
+    "docs:preview": "pnpm --filter @a2ui-vue3-elementplus/docs preview",
     "changeset": "changeset",
-    "release": "pnpm build && changeset publish"
+    "release:check": "changeset status --verbose",
+    "version-packages": "pnpm release:check && changeset version",
+    "release": "pnpm version-packages && pnpm build && changeset publish",
+    "publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.6",

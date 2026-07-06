@@ -1,7 +1,12 @@
 {
-  "name": "@a2ui/vue-renderer",
-  "version": "0.1.0",
+  "name": "@a2ui-vue3-elementplus/vue-renderer",
+  "version": "1.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricLee823/a2ui-vue3-elementplus.git",
+    "directory": "packages/vue-renderer"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,7 +17,13 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "vite build",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
@@ -22,8 +33,8 @@
     "vue": "^3.4.0 || ^3.5.0"
   },
   "dependencies": {
-    "@a2ui/message-parser": "workspace:*",
-    "@a2ui/runtime-core": "workspace:*"
+    "@a2ui-vue3-elementplus/message-parser": "workspace:*",
+    "@a2ui-vue3-elementplus/runtime-core": "workspace:*"
   },
   "devDependencies": {}
 }

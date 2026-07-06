@@ -65,57 +65,7 @@ importers:
 
   apps/playground-vue-element-plus:
     dependencies:
-      '@a2ui/element-plus':
-        specifier: workspace:*
-        version: link:../../packages/element-plus
-      element-plus:
-        specifier: ^2.9.0
-        version: 2.14.2(vue@3.5.39(typescript@5.8.2))
-      vue:
-        specifier: ^3.5.0
-        version: 3.5.39(typescript@5.8.2)
-    devDependencies:
-      '@vitejs/plugin-vue':
-        specifier: ^5.2.4
-        version: 5.2.4(vite@6.4.3(@types/node@22.20.0)(sass@1.101.0))(vue@3.5.39(typescript@5.8.2))
-      typescript:
-        specifier: ^5.8.0
-        version: 5.8.2
-      vite:
-        specifier: ^6.0.0
-        version: 6.4.3(@types/node@22.20.0)(sass@1.101.0)
-      vue-tsc:
-        specifier: ^2.2.0
-        version: 2.2.0(typescript@5.8.2)
-
-  examples/basic-form:
-    dependencies:
-      '@a2ui/element-plus':
-        specifier: workspace:*
-        version: link:../../packages/element-plus
-      element-plus:
-        specifier: ^2.9.0
-        version: 2.14.2(vue@3.5.39(typescript@5.8.2))
-      vue:
-        specifier: ^3.5.0
-        version: 3.5.39(typescript@5.8.2)
-    devDependencies:
-      '@vitejs/plugin-vue':
-        specifier: ^5.2.4
-        version: 5.2.4(vite@6.4.3(@types/node@22.20.0)(sass@1.101.0))(vue@3.5.39(typescript@5.8.2))
-      typescript:
-        specifier: ^5.8.0
-        version: 5.8.2
-      vite:
-        specifier: ^6.0.0
-        version: 6.4.3(@types/node@22.20.0)(sass@1.101.0)
-      vue-tsc:
-        specifier: ^2.2.0
-        version: 2.2.0(typescript@5.8.2)
-
-  examples/custom-component:
-    dependencies:
-      '@a2ui/element-plus':
+      '@a2ui-vue3-elementplus/element-plus':
         specifier: workspace:*
         version: link:../../packages/element-plus
       element-plus:
@@ -140,7 +90,7 @@ importers:
 
   packages/element-plus:
     dependencies:
-      '@a2ui/vue-renderer':
+      '@a2ui-vue3-elementplus/vue-renderer':
         specifier: workspace:*
         version: link:../vue-renderer
       element-plus:
@@ -168,7 +118,7 @@ importers:
 
   packages/scheduler:
     dependencies:
-      '@a2ui/runtime-core':
+      '@a2ui-vue3-elementplus/runtime-core':
         specifier: workspace:*
         version: link:../runtime-core
     devDependencies:
@@ -184,10 +134,10 @@ importers:
 
   packages/vue-renderer:
     dependencies:
-      '@a2ui/message-parser':
+      '@a2ui-vue3-elementplus/message-parser':
         specifier: workspace:*
         version: link:../message-parser
-      '@a2ui/runtime-core':
+      '@a2ui-vue3-elementplus/runtime-core':
         specifier: workspace:*
         version: link:../runtime-core
       vue:

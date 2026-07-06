@@ -4,10 +4,10 @@ title: A2UI Vue3 Element Plus
 
 # A2UI Vue3 Element Plus
 
-Render A2UI v0.9 realtime message text in Vue 3 applications using Element Plus.
+在 Vue 3 应用中使用 Element Plus 渲染 A2UI v0.9/v0.9.1 实时消息文本。
 
 ```ts
-import { useA2UI } from '@a2ui/element-plus';
+import { A2Surface, useA2UI } from '@a2ui-vue3-elementplus/element-plus';
 
 const { runtime, pushMessage } = useA2UI();
 
@@ -20,12 +20,12 @@ eventSource.addEventListener('message', (event) => {
 <A2Surface :runtime="runtime" surface-id="main" />
 ```
 
-## Start here
+## 从这里开始
 
-- [Quick Start](/guide/quick-start)
-- [Architecture](/guide/architecture)
-- [Realtime Messages](/guide/realtime-messages)
-- [Data Examples](/guide/data-examples)
-- [Custom Components](/guide/custom-components)
-- [Project Rules](/guide/project-rules)
-- [API Reference](/api/)
+- [快速开始](/guide/quick-start)
+- [架构设计](/guide/architecture)
+- [实时消息](/guide/realtime-messages)
+- [数据示例](/guide/data-examples)
+- [自定义组件](/guide/custom-components)
+- [项目规则](/guide/project-rules)
+- [API 参考](/api/)

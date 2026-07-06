@@ -20,7 +20,7 @@ const emit = defineEmits<{
   error: [error: unknown];
 }>();
 
-const { runtime, pushMessage } = useA2UI({
+const { pushMessage } = useA2UI({
   components: props.components,
   onAction: (action) => emit('action', action),
   onError: (error) => emit('error', error)
@@ -39,7 +39,6 @@ watch(
 
 <template>
   <A2Surface
-    :runtime="runtime"
     :surface-id="surfaceId"
     :components="components"
     @action="emit('action', $event)"

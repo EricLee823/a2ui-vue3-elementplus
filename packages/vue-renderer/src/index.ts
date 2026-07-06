@@ -4,6 +4,13 @@ export { default as A2RealtimeRenderer } from './components/A2RealtimeRenderer.v
 export { default as RenderUnknown } from './components/RenderUnknown.vue';
 export { A2UIVuePlugin, createA2UIVuePlugin } from './plugin';
 export { createComponentRegistry } from './registry/createComponentRegistry';
+export {
+  A2_REGISTRY_KEY,
+  A2_RUNTIME_KEY,
+  injectA2Registry,
+  injectA2Runtime,
+  provideA2UIContext
+} from './context/injectionKeys';
 export { createRenderContext, provideA2RenderContext, useA2RenderContext } from './context/renderContext';
 export { useA2UI } from './useA2UI';
 export type {

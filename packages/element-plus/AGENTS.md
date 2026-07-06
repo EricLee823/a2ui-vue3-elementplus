@@ -1,18 +1,18 @@
-# Element Plus Adapter Instructions
+# Element Plus Adapter 说明
 
-`element-plus` is the low-cost public facade and Element Plus adapter.
+`element-plus` 是低成本 public facade 和 Element Plus adapter。
 
-It may depend on:
+它可以依赖：
 
-- `@a2ui/vue-renderer`
+- `@a2ui-vue3-elementplus/vue-renderer`
 - Vue
 - Element Plus
 
-It must not own:
+它不得负责：
 
-- SSE/WebSocket connection setup,
-- authentication,
-- reconnect strategy,
-- backend action endpoints.
+- SSE/WebSocket connection setup；
+- authentication；
+- reconnect strategy；
+- backend action endpoints。
 
-Keep wrappers thin. Convert A2UI component props into Element Plus props, emit runtime actions, and preserve custom component override behavior.
+保持 wrappers 轻薄。将 A2UI component props 转换为 Element Plus props，发出 runtime actions，并保留 custom component override behavior。

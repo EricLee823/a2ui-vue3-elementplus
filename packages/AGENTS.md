@@ -1,36 +1,36 @@
-# Packages Instructions
+# Packages 说明
 
-These rules apply to every package under `packages/`.
+这些规则适用于 `packages/` 下的每个 package。
 
-## Boundaries
+## 边界
 
-- Keep package dependencies directional and explicit.
-- Do not import from app, example, fixture, or docs code.
-- Public APIs must be exported from each package `src/index.ts`.
-- Keep package versions aligned unless there is an explicit release reason to diverge.
+- 保持 package dependencies 方向明确、关系清楚。
+- 不要从 app、example、fixture 或 docs code 中 import。
+- Public APIs 必须从每个 package 的 `src/index.ts` 导出。
+- 除非有明确 release 原因，否则保持 package versions 对齐。
 
-## Package Roles
+## 包角色
 
 ```txt
 protocol-v09
-  Types and helpers only.
+  仅包含 types 和 helpers。
 
 message-parser
-  JSON, JSONL, and chunk parsing only.
+  仅负责 JSON、JSONL 和 chunk parsing。
 
 runtime-core
-  Framework-free state machine and JSON Pointer data updates.
+  与框架无关的 state machine 和 JSON Pointer data updates。
 
 scheduler
-  Queueing, priority, batching, and coalescing.
+  Queueing、priority、batching 和 coalescing。
 
 vue-renderer
-  Vue renderer, render context, and component registry.
+  Vue renderer、render context 和 component registry。
 
 element-plus
-  Element Plus adapter and public facade.
+  Element Plus adapter 和 public facade。
 ```
 
-## Verification
+## 验证
 
-Run package-local tests for small changes. Run root `pnpm test` and `pnpm build` when changing public APIs or cross-package contracts.
+小变更运行 package-local tests。修改 public APIs 或 cross-package contracts 时，运行根目录 `pnpm test` 和 `pnpm build`。

@@ -1,5 +1,6 @@
-import { createA2Runtime } from '@a2ui/runtime-core';
-import { createChunkParser, parseJson, parseMessage } from '@a2ui/message-parser';
+import { createA2Runtime } from '@a2ui-vue3-elementplus/runtime-core';
+import { createChunkParser, parseJson, parseMessage } from '@a2ui-vue3-elementplus/message-parser';
+import { injectA2Registry, provideA2UIContext } from './context/injectionKeys';
 import { createComponentRegistry } from './registry/createComponentRegistry';
 import type { A2ComponentRegistry, A2CustomComponents } from './registry/types';
 
@@ -21,8 +22,15 @@ export interface A2UIInstance {
 
 export function useA2UI(options: UseA2UIOptions = {}): A2UIInstance {
   const runtime = options.runtime ?? createA2Runtime();
-  const registry = options.registry ?? createComponentRegistry(options.components);
+  const injectedRegistry = injectA2Registry();
+  const registry = options.registry ?? injectedRegistry ?? createComponentRegistry(options.components);
   const chunkParser = createChunkParser();
+
+  if ((options.registry || injectedRegistry) && options.components) {
+    registry.registerMany(options.components);
+  }
+
+  provideA2UIContext({ runtime, registry });
 
   runtime.onAction?.((action: unknown) => options.onAction?.(action));
   runtime.onError?.((error: unknown) => options.onError?.(error));

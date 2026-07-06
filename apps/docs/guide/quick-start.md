@@ -1,18 +1,18 @@
-# Quick Start
+# 快速开始
 
-Install the renderer package and Element Plus in a Vue 3 app.
+在 Vue 3 应用中安装渲染器 package 和 Element Plus。
 
 ```bash
-pnpm add @a2ui/element-plus element-plus vue
+pnpm add @a2ui-vue3-elementplus/element-plus element-plus vue
 ```
 
-Create a runtime and render the primary surface.
+创建 A2UI 实例并渲染主 surface。
 
 ```vue
 <script setup lang="ts">
-import { A2Surface, useA2UI } from '@a2ui/element-plus';
+import { A2Surface, useA2UI } from '@a2ui-vue3-elementplus/element-plus';
 
-const { runtime, pushMessage } = useA2UI();
+const { pushMessage } = useA2UI();
 
 function receiveA2UIMessage(text: string) {
   pushMessage(text);
@@ -20,8 +20,8 @@ function receiveA2UIMessage(text: string) {
 </script>
 
 <template>
-  <A2Surface :runtime="runtime" surface-id="main" />
+  <A2Surface surface-id="main" />
 </template>
 ```
 
-The application owns networking, authentication, retries, and business actions. A2UI receives message text and updates surfaces.
+应用负责网络、鉴权、重试和业务 actions。A2UI 接收消息文本并更新 surfaces。

@@ -1,4 +1,4 @@
-import type { A2RuntimeMessage } from '@a2ui/runtime-core';
+import type { A2RuntimeMessage } from '@a2ui-vue3-elementplus/runtime-core';
 
 export type SchedulerStrategy = 'balanced' | 'fifo';
 export type SchedulerDispatch = (message: A2RuntimeMessage) => unknown | Promise<unknown>;

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createScheduler } from './index';
 
-describe('@a2ui/scheduler', () => {
+describe('@a2ui-vue3-elementplus/scheduler', () => {
   it('queues and flushes messages through the dispatcher', async () => {
     const dispatch = vi.fn((message) => message.type);
     const scheduler = createScheduler({ dispatch });

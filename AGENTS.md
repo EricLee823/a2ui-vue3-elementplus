@@ -1,75 +1,89 @@
 # AGENTS.md
 
-This is the repository-level Codex instruction file. Codex discovers `AGENTS.md` files from the repository root down to the current working directory. More specific nested `AGENTS.md` files override or extend this file for their subtree.
+这是仓库级 Codex 指令文件。Codex 会从仓库根目录到当前工作目录逐级发现 `AGENTS.md` 文件。更具体的嵌套 `AGENTS.md` 会为其子树覆盖或扩展本文件。
 
-Do not use `.agent/` or `.agents/` for Codex instructions. Those directories are not part of Codex instruction discovery unless a user has explicitly configured fallback filenames. Command execution policy rules belong under `.codex/rules/*.rules` when the project `.codex` layer is trusted.
+`.agent/` 和 `.agents/` 不是默认 Codex 指令发现目录；即使这些目录存在，也不要把仓库规则放在那里。项目本地命令执行策略放在 `.codex/rules/*.rules`，架构和人类协作规则放在 docs。
 
-## Mission
+## 使命
 
-This repository renders A2UI v0.9/v0.9.1 realtime message text in Vue 3 applications using Element Plus.
+本仓库用于在 Vue 3 应用中通过 Element Plus 渲染 A2UI v0.9/v0.9.1 实时消息文本。
 
-Keep the user-facing integration small:
+保持面向用户的集成很小：
 
 ```ts
 pushMessage(event.data);
 ```
 
-The application owns realtime transport, auth, reconnects, and business APIs. These packages own message parsing, runtime state, incremental rendering, component mapping, and action events.
+应用负责实时传输、鉴权、重连和业务 APIs。这些 packages 负责消息解析、runtime state、增量渲染、组件映射和 action events。
 
-## Communication
+## 沟通
 
-Use Chinese as the first-priority language when communicating with the user. Keep code, package names, public API names, and protocol keywords in their original form.
+与用户沟通时优先使用中文。代码、package names、public API names 和 protocol keywords 保持原文。
 
-## Read First
+## 文档入口
 
-Before broad changes, read:
+根目录文档保持精简：
 
-1. `ARCHITECTURE.md`
-2. `PROJECT_RULES.md`
-3. the closest nested `AGENTS.md` for the files you edit
+- `README.md`: 仓库入口、工作区列表和文档导航。
+- `PROJECT_RULES.md`: 人类贡献者规则入口，正文链接到 docs。
+- `RELEASE.md`: 发布流程。
+- `AGENTS.md`: agent 工作入口。
+- `apps/docs/guide/architecture.md` 与 `apps/docs/zh/guide/architecture.md`: 架构说明。
+- `apps/docs/guide/project-rules.md` 与 `apps/docs/zh/guide/project-rules.md`: 项目规则。
 
-## Core Rules
+不要新增长期根目录说明文档；优先放入 `apps/docs`，并在 `README.md` 链接。
 
-- Preserve package boundaries.
-- Runtime packages must not depend on Vue, Element Plus, or DOM UI APIs.
-- `packages/vue-renderer` must not import Element Plus.
-- `packages/element-plus` is the public facade and Element Plus adapter.
-- Do not add required SSE/WebSocket URL configuration to the main facade.
-- Treat custom component injection as public API.
-- Canonical fixtures must use A2UI v0.9 shape: `createSurface`, `updateComponents`, `updateDataModel`, `deleteSurface`.
-- Data binding examples must use JSON Pointer paths such as `/profile/name`.
-- Public API changes must update docs and at least one example or fixture when relevant.
-- Do not commit generated or local state: `node_modules`, `dist`, `.turbo`, `.vite`, `.codegraph`, VitePress cache/dist.
+## 先读
 
-## Verification
+在进行大范围变更前，请阅读：
 
-For cross-package code changes, run:
+1. `README.md`
+2. `apps/docs/guide/architecture.md`
+3. `apps/docs/guide/project-rules.md`
+4. 要编辑文件对应的最近一层嵌套 `AGENTS.md`
+
+## 核心规则
+
+- 保持 package boundaries。
+- Runtime packages 不得依赖 Vue、Element Plus 或 DOM UI APIs。
+- `packages/vue-renderer` 不得 import Element Plus。
+- `packages/element-plus` 是 public facade 和 Element Plus adapter。
+- 不要给 main facade 增加必需的 SSE/WebSocket URL 配置。
+- 将 custom component injection 视为 public API。
+- 标准 fixtures 涉及 lifecycle messages 时必须使用 A2UI v0.9 object-key shape: `createSurface`、`updateComponents`、`updateDataModel`、`deleteSurface`。
+- Data binding examples 必须使用 JSON Pointer paths，例如 `/profile/name`。
+- Public API changes 必须在相关时更新 docs 以及至少一个 fixture 或 playground 覆盖点。
+- 不要提交 generated 或 local state: `node_modules`、`dist`、`.turbo`、`.vite`、`.codegraph`、`coverage`、`*.tsbuildinfo`、`apps/docs/.vitepress/cache`、`apps/docs/.vitepress/dist`。
+
+## 验证
+
+对于跨包代码变更，运行：
 
 ```bash
 pnpm test
 pnpm build
 ```
 
-For docs-only changes, run:
+对于 docs-only 变更，运行：
 
 ```bash
 pnpm docs:build
 ```
 
-If a check cannot run, report the reason.
+如果检查无法运行，请报告原因。
 
-## Rule Evolution
+## 规则演进
 
-Rules are allowed to evolve, but changes must be explicit and reviewable.
+规则允许演进，但变更必须明确且可审阅。
 
-When changing a durable rule:
+变更持久规则时：
 
-1. update the relevant `AGENTS.md`,
-2. update `PROJECT_RULES.md` if humans need the same rule,
-3. add or update docs/examples/tests if behavior changed,
-4. explain the reason in the commit or PR summary.
+1. 更新相关 `AGENTS.md`；
+2. 如果人类贡献者也需要同一规则，更新 `apps/docs/guide/project-rules.md`、`apps/docs/zh/guide/project-rules.md`，必要时更新 `PROJECT_RULES.md` 的入口说明；
+3. 如果行为发生变化，新增或更新 `apps/docs`、`fixtures/jsonl` 或 tests；
+4. 在 commit 或 PR summary 中解释原因。
 
-Use this lifecycle vocabulary in docs or PRs when helpful:
+必要时在 docs 或 PR 中使用以下生命周期词汇：
 
 ```txt
 proposed -> trial -> adopted -> revised -> deprecated
@@ -77,18 +91,18 @@ proposed -> trial -> adopted -> revised -> deprecated
 
 ## CodeGraph
 
-If `.codegraph/` exists and you need to understand or locate code, use CodeGraph before grep/find or broad file reads:
+如果 `.codegraph/` 存在，并且你需要理解或定位代码，请先使用 CodeGraph，再使用 grep/find 或大范围文件读取：
 
 ```bash
 codegraph explore "<symbol names or question>"
 ```
 
-Use direct file reads for known files.
+已知文件可以直接读取。CodeGraph 用于第一轮定位；最终以当前工作树核验。若发现已删除路径或明显 stale 结果，请用当前文件系统复核，并在需要时提醒重建索引。
 
-## Current Public Entry
+## 当前公共入口
 
 ```ts
-import { A2Surface, useA2UI } from '@a2ui/element-plus';
+import { A2Surface, useA2UI } from '@a2ui-vue3-elementplus/element-plus';
 
 const { runtime, pushMessage } = useA2UI();
 pushMessage(event.data);

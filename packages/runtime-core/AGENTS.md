@@ -1,21 +1,21 @@
-# Runtime Core Instructions
+# Runtime Core 说明
 
-`runtime-core` must remain framework-independent.
+`runtime-core` 必须保持 framework-independent。
 
-Do not import:
+不要 import：
 
 - `vue`
 - `element-plus`
 - browser UI components
 - DOM-only rendering APIs
 
-The runtime owns:
+runtime 负责：
 
-- surface creation/deletion,
-- component maps,
-- data model updates,
-- JSON Pointer helpers,
-- action payload generation,
-- runtime events/subscriptions.
+- surface creation/deletion；
+- component maps；
+- data model updates；
+- JSON Pointer helpers；
+- action payload generation；
+- runtime events/subscriptions。
 
-Prefer flat maps keyed by component id. Do not introduce deep reactive UI trees here.
+优先使用按 component id 索引的 flat maps。不要在这里引入 deep reactive UI trees。

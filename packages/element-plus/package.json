@@ -1,7 +1,12 @@
 {
-  "name": "@a2ui/element-plus",
-  "version": "0.1.0",
+  "name": "@a2ui-vue3-elementplus/element-plus",
+  "version": "1.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricLee823/a2ui-vue3-elementplus.git",
+    "directory": "packages/element-plus"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,8 +19,16 @@
     },
     "./style.css": "./dist/style.css"
   },
-  "files": ["dist"],
-  "sideEffects": ["./dist/style.css"],
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "sideEffects": [
+    "./dist/style.css"
+  ],
   "scripts": {
     "build": "vite build",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
@@ -26,6 +39,6 @@
     "vue": "^3.4.0 || ^3.5.0"
   },
   "dependencies": {
-    "@a2ui/vue-renderer": "workspace:*"
+    "@a2ui-vue3-elementplus/vue-renderer": "workspace:*"
   }
 }

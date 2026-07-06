@@ -1,7 +1,12 @@
 {
-  "name": "@a2ui/scheduler",
-  "version": "0.1.0",
+  "name": "@a2ui-vue3-elementplus/scheduler",
+  "version": "1.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricLee823/a2ui-vue3-elementplus.git",
+    "directory": "packages/scheduler"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,13 +20,17 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@a2ui/runtime-core": "workspace:*"
+    "@a2ui-vue3-elementplus/runtime-core": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.3.5",

@@ -1,4 +1,4 @@
-import type { A2RuntimeMessage } from '@a2ui/runtime-core';
+import type { A2RuntimeMessage } from '@a2ui-vue3-elementplus/runtime-core';
 import type { Scheduler, SchedulerDispatch, SchedulerOptions, SchedulerStrategy } from './types';
 
 interface QueueItem {

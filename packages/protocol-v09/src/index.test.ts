@@ -8,7 +8,7 @@ import {
   type A2ComponentNode
 } from './index';
 
-describe('@a2ui/protocol-v09', () => {
+describe('@a2ui-vue3-elementplus/protocol-v09', () => {
   const root: A2ComponentNode = {
     id: 'root',
     component: 'Column',

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createA2Runtime, createSurfaceStore, getByJsonPointer, removeByJsonPointer, setByJsonPointer } from './index';
 
-describe('@a2ui/runtime-core', () => {
+describe('@a2ui-vue3-elementplus/runtime-core', () => {
   it('manages multiple surfaces with root as the default root id', () => {
     const store = createSurfaceStore();
 

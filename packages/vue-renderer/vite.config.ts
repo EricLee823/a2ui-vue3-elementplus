@@ -19,7 +19,7 @@ export default defineConfig({
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs')
     },
     rollupOptions: {
-      external: ['vue', '@a2ui/message-parser', '@a2ui/runtime-core']
+      external: ['vue', '@a2ui-vue3-elementplus/message-parser', '@a2ui-vue3-elementplus/runtime-core']
     }
   }
 });

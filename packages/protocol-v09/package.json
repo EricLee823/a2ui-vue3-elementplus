@@ -1,8 +1,13 @@
 {
-  "name": "@a2ui/protocol-v09",
-  "version": "0.1.0",
+  "name": "@a2ui-vue3-elementplus/protocol-v09",
+  "version": "1.0.0",
   "description": "A2UI v0.9 protocol types.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricLee823/a2ui-vue3-elementplus.git",
+    "directory": "packages/protocol-v09"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,6 +21,10 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest run",

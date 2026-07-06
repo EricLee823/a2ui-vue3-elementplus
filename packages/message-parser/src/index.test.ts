@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createChunkParser, parseJson, parseMessage } from './index';
 
-describe('@a2ui/message-parser', () => {
+describe('@a2ui-vue3-elementplus/message-parser', () => {
   it('parses a single JSON message', () => {
     expect(parseJson<{ type: string }>('{"type":"createSurface"}')).toEqual({
       ok: true,

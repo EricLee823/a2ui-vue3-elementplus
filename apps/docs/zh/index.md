@@ -7,7 +7,7 @@ title: A2UI Vue3 Element Plus
 在 Vue 3 应用中使用 Element Plus 渲染 A2UI v0.9/v0.9.1 实时消息文本。
 
 ```ts
-import { useA2UI } from '@a2ui/element-plus';
+import { A2Surface, useA2UI } from '@a2ui-vue3-elementplus/element-plus';
 
 const { runtime, pushMessage } = useA2UI();
 

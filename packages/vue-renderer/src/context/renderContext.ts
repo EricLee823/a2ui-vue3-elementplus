@@ -1,4 +1,4 @@
-import { computed, h, inject, provide, type InjectionKey, type VNodeChild } from 'vue';
+import { computed, h, inject, provide, type InjectionKey, type Ref, type VNodeChild } from 'vue';
 import A2Component from '../components/A2Component.vue';
 import { createComponentRegistry } from '../registry/createComponentRegistry';
 import type { A2ComponentContext, A2ComponentRegistry, A2CustomComponents } from '../registry/types';
@@ -6,6 +6,7 @@ import type { A2ComponentContext, A2ComponentRegistry, A2CustomComponents } from
 export interface A2RenderContext {
   runtime: any;
   registry: A2ComponentRegistry;
+  runtimeVersion?: Readonly<Ref<number>>;
   onAction?: (action: unknown) => void;
   onError?: (error: unknown) => void;
 }
@@ -28,6 +29,7 @@ export function createRenderContext(options: {
   runtime: any;
   registry?: A2ComponentRegistry;
   components?: A2CustomComponents;
+  runtimeVersion?: Readonly<Ref<number>>;
   onAction?: (action: unknown) => void;
   onError?: (error: unknown) => void;
 }): A2RenderContext {
@@ -39,6 +41,7 @@ export function createRenderContext(options: {
   return {
     runtime: options.runtime,
     registry,
+    runtimeVersion: options.runtimeVersion,
     onAction: options.onAction,
     onError: options.onError
   };
@@ -95,7 +98,8 @@ export function createComponentContext(ctx: A2RenderContext, surfaceId: string, 
       }
       return h(A2Component, {
         surfaceId,
-        componentId
+        componentId,
+        runtimeVersion: ctx.runtimeVersion?.value
       });
     },
     renderChildren(componentIds) {
@@ -108,7 +112,8 @@ export function createComponentContext(ctx: A2RenderContext, surfaceId: string, 
           h(A2Component, {
             key: id,
             surfaceId,
-            componentId: id
+            componentId: id,
+            runtimeVersion: ctx.runtimeVersion?.value
           })
         );
       }
@@ -125,6 +130,7 @@ export function createComponentContext(ctx: A2RenderContext, surfaceId: string, 
           key: `${templateId}:${index}`,
           surfaceId,
           componentId: templateId,
+          runtimeVersion: ctx.runtimeVersion?.value,
           scopePath: `${path}/${index}`
         })
       );
